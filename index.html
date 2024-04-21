@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Gestor de tareas</title>
+</head>
+<body>
+    <button onclick="openModal()"  > Crear Proyecto </button>
+      
+      
+        <dialog class="modal" id="mainModal">
+          <h1>Proyecto</h1>
+          <input type="text" id="Proyecto" placeholder="Nombre del proyecto" required></input>
+          <input type="text" id="descripcion" placeholder="Descripcion"> </input>
+          <button onclick="CrearProyecto()" >Crear Proyecto</button>
+          <button onclick="closeModal()">Cerrar</button>
+        </dialog>
+      
+
+      <button onclick="openModal2()" >AgregarTarea</button>
+
+      <dialog class="modal" id="mainModal2">
+        <h1>Tarea</h1>
+        <input type="text" id="nombreProyecto" placeholder="nombre del proyecto"  ></input>
+        <input type="text" id="Tarea" placeholder="nombre de la tarea"  > </input>
+        <input type = "text" id="descripcionT" placeholder="descripcion"  > </input>
+        <input type = "date" id="Fecha" placeholder="fechaVencimiento"  > </input>
+        <button onclick="AgregarTarea()">Agregar Tarea</button>
+        <button onclick="closeModal2()">Cerrar</button>
+      </dialog>
+
+      <button onclick="openModal3()">Mostrar Tareas</button>
+      <dialog class="modal" id="mainModal3">
+        <h1>Buscar tareas</h1>
+        <input type="text" id="nombreProyecto" placeholder="nombre del proyecto">
+        <button onclick="MostrarTarea()">Ver tareas</button>
+        <button onclick="closeModal3()">Cerrar</button>
+        <div class="container">
+
+        </div>
+
+      </dialog>
+
+      <button onclick="openModal4()">Mostrar Tareas fecha vencimiento</button>
+      <dialog class="modal" id="mainModal4">
+        <h1>Buscar tareas por fecha de vencimiento</h1>
+        <input type="date" id="Fecha" placeholder="Fecha vencimiento">
+        <button onclick="BuscarVencimiento()">Buscar tarea</button>
+        <button onclick="closeModal4()">Cerrar</button>
+        <div class="container2">
+
+        </div>
+
+      
+     
+
+
+
+        <script src="funciones.js"></script>
+      
+</body>
+</html>
