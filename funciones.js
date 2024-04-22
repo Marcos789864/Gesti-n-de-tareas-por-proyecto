@@ -16,8 +16,6 @@ const openModal2 = () =>
 }
 
 
-
-
 const modal3 = document.getElementById("mainModal3");
 
 const openModal3 = () => 
@@ -27,7 +25,11 @@ const openModal3 = () =>
 
 const closeModal3 = () => 
 {
-    modal3.close();
+
+        document.querySelector(".container").innerHTML = "";
+        document.getElementById("mainModal3").close();
+    
+    
 }
 
 const modal4 = document.getElementById("mainModal4");
@@ -60,6 +62,17 @@ function mostrarSweetAlert() {
     });
 }
 
+function mostrarSweetAlert2() {
+    swal({
+        icon: "error",
+        title: "Ha ocurrido un error",
+        text: "Crea un proyecto con un nombre distinto",
+        onOpen: function () {
+            document.querySelector('.swal-overlay').style.zIndex = '10000';
+        }
+    });
+}
+
 function VerificarNombre(pro) {
     if (Proyectos.length === 0) {
         Proyectos.push(pro);
@@ -71,7 +84,8 @@ function VerificarNombre(pro) {
             closeModal();
             mostrarSweetAlert();
         } else {
-            alert("Este proyecto ya existe, ingrese otro nombre");
+            closeModal();
+            mostrarSweetAlert2();
         }
     }
 }
@@ -91,19 +105,16 @@ function CrearProyecto()
 }
 
 function closeModal2() {
-    // Cerrar el modal aquí
-    modal2.close();
-
-    // Mostrar el SweetAlert después de cerrar el modal
+    
+    modal2.close();  
     swal({
         icon: "success",
-        title: "¡Tarea agregada!",
-        text: "Tu tarea se ha agregado exitosamente.",
+        title: "Tu tarea ha sido creado con exito",
         onOpen: function () {
-            // Establecer un z-index alto para el SweetAlert
             document.querySelector('.swal-overlay').style.zIndex = '10000';
         }
     });
+    
 }
 
 function AgregarTarea() {
@@ -197,7 +208,7 @@ function MostrarTarea()
 
     In.addEventListener('change',function()
         {
-           if(In.checked)
+           if(In.checked )
            {
             lbl.style.textDecoration = "line-through";
             lbl2.style.textDecoration = "line-through";
@@ -211,6 +222,15 @@ function MostrarTarea()
            }
         })
 
+
+        if(Tarea.estado == "completado")
+        {
+            In.checked = true;
+            lbl.style.textDecoration = "line-through";
+            lbl2.style.textDecoration = "line-through";
+            lbl3.style.textDecoration = "line-through";
+        }
+
     for(let y = 0; y < arrTareas.length;y++)
     {
         lbl.innerHTML = arrTareas[y].nombre + ' ';
@@ -221,8 +241,11 @@ function MostrarTarea()
             container.appendChild(lbl2);
             container.appendChild(lbl3);
     }
+    
 
    }
+
+
 
 }
 
@@ -256,7 +279,7 @@ function BuscarProyecto(nombreProyecto)
     var i = 0
     while(i < Proyectos.length )
     {
-        if(nombreProyecto == Proyectos[i].nombre)
+        if(nombreProyecto.nombre == Proyectos[i].nombre || nombreProyecto == Proyectos[i].nombre )
         {
            return true;
         }
